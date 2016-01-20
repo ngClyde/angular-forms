@@ -1,0 +1,15 @@
+/*style.css*/
+
+/*
+Angular adds ng-dirty class to the input control the moment the input control edited
+ng-valid is added when the input control has passed validation
+ng-invalid is added when the input control has failed validation
+*/
+.ng-dirty .ng-invalid{
+  background-color:red;
+  color:white;
+}
+.ng-dirty .ng-valid{
+  background-color:green;
+  color:white;
+}

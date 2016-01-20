@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--include stylesheets if you have (in this example we use style.css)-->
+  <link href="style.css" rel="stylesheet" />
+  <!--
+    include the angular js script file (required) 
+  -->
+  <script src="https://code.angularjs.org/1.4.8/angular.js" data-semver="1.4.8" data-require="angular.js@1.4.8"></script>
+  <!--
+    include your custom scripts depending on your app requirements (required in this example) 
+  -->
+  <script src="script.js"></script>
+</head>
+<!--
+   use ng-app directive to ask Angular to watch for changes happening with that particular
+   html section
+   ng-app="Index" - here Index is the name of the module we have written in 
+   scripts.js file
+  -->
+
+<body ng-app="Index">
+  <!--
+    attach a controller to the section
+  -->
+  <div ng-controller='IndexController'>
+    <h1>Email me (maybe)</h1>
+    <form name="contactForm">
+      <!-- 
+        ng-model is used to synchronize the view and the model 
+        values are not set to the ng-model unless the input control is valid
+        -->
+      <input type="email" name="emailId" ng-model="EmailId" />
+      <!-- 
+        if ng-show directive has a truthy value it will show the element if not it hides it 
+        contactForm.emailId.$invalid returns true if the data in the input element named "emailId" belonging to the form named "contactForm" is invalid
+        -->
+      <p ng-show="contactForm.emailId.$invalid">Your form inputs are invalid</p>
+      <!-- 
+        contactForm.emailId.$valid returns true if the data in the input element named "emailId" belonging to the form named "contactForm" is valid
+        -->
+      <p ng-show="contactForm.emailId.$valid">Your form inputs are valid</p>
+    </form>
+    <div>
+      <!-- 
+        notice that 2 way data binding doesn't work when ng-model="EmailId" is invalid
+        -->
+      <p>You enetered {{ EmailId }}</p>
+    </div>
+  </div>
+</body>
+
+</html>
